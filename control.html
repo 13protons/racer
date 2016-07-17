@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Socket.io Test</title>
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect('/');
+
+      $(document).ready(function(){
+        $('#left').click(function(){
+          socket.emit('btn', { turn: 'left' });
+        })
+
+        $('#right').click(function(){
+          socket.emit('btn', { turn: 'right' });
+        })
+
+        $('#go').click(function(){
+          socket.emit('btn', { move: true });
+        })
+      });
+    </script>
+
+    <script src="/vendor/phaser/build/phaser.js"></script>
+  </head>
+  <body>
+    <h1>Controlling the Car</h1>
+    <button id="left"><= Left</button>
+    <button id="go"> Go! </button>
+    <button id="right">Right =></button>
+  </body>
+</html>
